@@ -1,0 +1,200 @@
+#1. Create a list of given structure and get the Access list as provided below:
+#x=[100,200,300,400,500,[1,2,3,4,5,[10,20,30,40,50],6,7,8,9],600,700,800]
+#Access list: [1, 2, 3, 4]
+#Access list: [600, 700]
+#Access list: [100, 300, 500, 600, 800]
+#Access list: [[800, 700, 600, [1, 2, 3, 4, 5, [10, 20, 30, 40, 50], 6, 7, 8, 9], 500, 400, 300, 200, 100]]
+#Access list: [10]
+#Access list: [ ]
+
+Ans:
+x= [100, 200, 300, 400, 500, [1, 2, 3, 4, 5, [10, 20, 30, 40, 50], 6, 7, 8, 9], 600, 700, 800]
+
+#
+Accesslist = x[5][0:4]
+print("Access list: ", Accesslist)
+
+#
+Accesslist=x[6:-1]
+print("Access list: ", Accesslist)
+
+#
+Accesslist = []
+for i in range(0, len(x), 2):
+    Accesslist.append(x[i])
+print("Access list: ", Accesslist)
+
+#
+Accesslist = []
+for i in x:
+    Accesslist.append(x[::-1])
+    break
+print("Access list: ", Accesslist)
+
+#
+Accesslist = []
+for i in x:
+    Accesslist.append(x[5][5][0])
+    break
+print("Access list: ", Accesslist)
+
+#
+Accesslist=[]
+print("Access list: ", Accesslist)
+
+
+
+
+#2. Create a list of thousand numbers using range and xrange and see the difference between each
+#other.
+#(For reference:https://www.techbeamers.com/python-xrange-range/)
+
+Ans:
+import sys
+#range
+r1 = range(1, 1000)
+print("Type of r1: ")
+print(type(r1))
+print("size allotted using range is ", sys.getsizeof(r1))
+print("r1", r1[0:3])
+
+#xrange
+r2= xrange(1,1000)
+print("Type of r2: ",type(r2))
+print("size allotted using xrange is ", sys.getsizeof(r2))
+print(r2[0:3])
+xrange is not defined in python 3 version but it works in python 2 version. It shows the type of r2 is  xrange.
+The variable storing range created by range() takes more memory as compared to variable storing the range
+using xrange()
+
+
+
+#3. How Tuple is beneficial as compared to the list?
+
+Ans: Tuples are immutable and hashable so we can use them as a  key in dictonary while we can not use list because they
+ are mutable and they don't have hashable nature. Also we can perform slicing operation on range function but when we
+ use slice operation on xrange function, it will raise error.
+
+#4. Write a program in Python to iterate through the list of numbers in the range of 1,100 and print
+#the number which is divisible by 3 and is a multiple of 2.
+
+Ans:
+list1 = range(1, 100)
+for i in list1:
+    if i % 3 == 0 and i % 2 == 0:
+        print(i)
+
+#5. Write a program in Python to reverse a string and print only the vowel alphabet if it exists in the
+#string with their index.
+
+Ans:
+string = str(input("Enter a string: "))
+for idx, char in enumerate(string[::-1]):
+    if char in "aeiou":
+        print(char, idx)# vowel with its index
+
+
+#6. Write a program in Python to iterate through the string “hello my name is abcde” and print the
+#string which is having an even length.
+
+Ans:
+s = "hello my name is abcde "
+t = s.split()
+for i in t:
+    if len(i) % 2 == 0:
+        print(i)
+
+
+
+#7. Write a program in python to print the pair of numbers whose sum is equal to the result
+#number that is let's say 8.
+#x=[1,2,3,4,5,6,7,8,9,-1]
+
+Ans:
+x = [1, 2, 3, 4, 5, 6, 7, 8, 9, -1]
+result = 8
+for j in range(0, len(x)):
+    for k in range(j+1, len(x)):
+        if x[j] + x[k] == result:
+            print((x[j], x[k]))
+
+
+#8. Write a program in Python to complete the following task:
+#Create two lists such as even_list and odd_list
+#Ask user to enter a number in the range of 1,50 and make sure if the entered number is
+#even, append it to the even_list and if the entered number is odd append it to the odd_list.
+#Keep that in mind you can only add 5 items in each list
+#Make sure once you enter all the 5 elements, calculate the sum of the list and return the
+#maximum of the list.
+
+Ans:
+even_list = []
+odd_list = []
+while len(even_list) <= 5 and len(odd_list) <= 5:
+    x = int(input("Enter a number in range 1 to 50: "))
+
+
+    if x in range(1, 50) and x % 2 == 0:
+        even_list.append(x)
+        #print("Even list: ",even_list)
+    elif x in range(1, 50) and x % 2 != 0:
+        odd_list.append(x)
+        #print("Odd list: ", odd_list)
+    else:
+        print("Entered number is not in the range of 1 to 50")
+
+    if len(even_list) == 5 and len(odd_list) < 5 :
+        print("Enter only odd numbers")
+    elif len(odd_list) == 5 and len(even_list) < 5:
+        print("Enter only even numbers")
+    elif len(even_list) < 5 or len(odd_list) < 5:
+        print("Enter even or odd numbers")
+    else:
+        break
+
+print('Even list: ',even_list)
+print('Odd list: ',odd_list)
+if len(even_list) == 5:
+    sum_even = sum(even_list)
+    max_even = max(even_list)
+
+print("Sum of Even list is ", sum_even)
+print('Maximum of Even list is  ', max_even)
+
+
+if len(odd_list) == 5:
+    sum_odd = sum(odd_list)
+    max_odd = max(odd_list)
+
+print('Sum of Odd list is ', sum_odd)
+print('Maximum of Odd list is ', max_odd)
+
+
+
+
+
+#9. Write a program to find out the occurrence of a specific character from an alphanumeric string.
+#Sample input: 12abcbacbaba344ab
+#Expected output: a=5 b=5 c=2
+#NOTE: Make sure to avoid counting the occurrence of numeric values in the string.
+
+Ans:
+s = str(input("Enter a string: "))
+alpha = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()! "
+
+
+for char in set(s):
+    if char in alpha:
+        #count = s.count(char)
+        print(char, '=', s.count(char))
+
+#10. Generate and print another tuple whose values are even numbers in the given tuple
+#(1,2,3,4,5,6,7,8,9,10).
+tuple1 = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+tup1 = []
+for i in tuple1:
+    if i % 2 == 0:
+        tup1.append(i)
+print(tuple(tup1))
+
+
