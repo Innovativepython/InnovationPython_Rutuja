@@ -1,0 +1,82 @@
+# Project Elevator
+from time import sleep
+from playsound import playsound
+
+numFloors = 6  # no.of floors
+startFloor = 0  # Everytime elevator will be at ground floor
+print("Press the button to call the elevator")
+currentFloor = int(input("Enter your current floor: "))    # current floor
+playsound('goingup.mp3')
+
+while startFloor < currentFloor:
+    startFloor = startFloor + 1
+    sleep(1)
+    print(startFloor)
+print("Destination is reached")
+playsound('destinationreached.mp3')
+sleep(1)
+print("Doors are opening")
+playsound('dooropen.mp3')
+sleep(1)
+print("Doors are closing. Please stand clear of closing doors")
+playsound('doorsclosing.mp3')
+
+
+
+def up():
+    counter = currentFloor
+    while counter < destinationFloor:
+        if destinationFloor > currentFloor:
+            counter = counter + 1
+            #playsound('goingup')
+            print(counter)
+            sleep(1)
+    print("Destinatation is reached")
+    playsound('destinationreached.mp3')
+    sleep(1.5)
+    print("Doors are opening")
+    playsound('dooropen.mp3')
+    sleep(1.5)
+    print("Doors are closing. Please stand clear of closing doors")
+    playsound('doorsclosing.mp3')
+
+
+def down():
+    counter = currentFloor
+    while counter > destinationFloor:
+        if destinationFloor < currentFloor:
+            counter = counter-1
+            print(counter)
+            sleep(1)
+    print("Destinatation is reached")
+    playsound('destinationreached.mp3')
+    sleep(1.5)
+    print("Doors are opening")
+    playsound('dooropen.mp3')
+    sleep(1.5)
+    print("Doors are closing. Please stand clear of closing doors")
+    playsound('doorsclosing.mp3')
+
+
+
+
+while True:
+    destinationFloor = int(input("Enter your destination floor in range 0 to 6: "))
+    if destinationFloor <= numFloors and destinationFloor >= 0:
+
+        if destinationFloor > currentFloor:
+            playsound('goingup.mp3')
+            up()
+
+        elif destinationFloor < currentFloor:
+            playsound('goingdown.mp3')
+            down()
+
+        else:
+            print("Please press the button for your destination floor")
+            playsound('pressdestinationagain.mp3')
+        currentFloor = destinationFloor
+    else:
+        print("Stop button is pressed")
+        break
+
