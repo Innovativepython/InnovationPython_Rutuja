@@ -1,0 +1,16 @@
+astroid==2.3.0
+certifi==2020.11.8
+colorama==0.4.1
+Django==2.1
+isort==4.3.21
+lazy-object-proxy==1.4.2
+mccabe==0.6.1
+pandas==1.1.1
+pylint==2.4.0
+pytz @ file:///tmp/build/80754af9/pytz_1606604771399/work
+six==1.12.0
+tsp==0.0.7
+tsp-solver2==0.4.1
+typed-ast==1.4.0
+wincertstore==0.2
+wrapt==1.11.2
