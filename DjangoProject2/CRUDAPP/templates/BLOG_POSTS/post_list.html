@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+{{list}}
+<head>
+    <center><h1>Blog</h1></center>
+</head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Title</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Comment</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for blogger in bloggers %}
+        <tr>
+            <td>{{ blogger.title }}</td>
+            <td>{{ blogger.name }}</td>
+            <td>{{ blogger.email }}</td>
+            <td>{{ blogger.comment }}</td>
+
+        </tr>
+        {% endfor %}
+  </tbody>
+</table>
+<br>
+<br>
+</body>
+</html>
