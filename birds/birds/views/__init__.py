@@ -1,0 +1,1 @@
+from .birdtype import BirdTypeViewSet
